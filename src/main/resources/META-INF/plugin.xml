@@ -1,15 +1,27 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.semenciuccosmin.androidcomposeprojecttemplateplugin</id>
+    <id>io.github.semenciuccosmin.androidcomposeprojecttemplateplugin</id>
     <name>Android-Compose-Project-Template-Plugin</name>
     <vendor>semenciuccosmin</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+    <idea-version since-build="242" until-build="242.*"/>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.semenciuccosmin.androidcomposeprojecttemplateplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="com.github.semenciuccosmin.androidcomposeprojecttemplateplugin.startup.MyProjectActivity" />
+        <toolWindow
+                factoryClass="io.github.semenciuccosmin.androidcomposeprojecttemplateplugin.toolWindow.MyToolWindowFactory"
+                id="MyToolWindow"
+        />
+        <postStartupActivity
+                implementation="io.github.semenciuccosmin.androidcomposeprojecttemplateplugin.startup.MyProjectActivity"
+        />
+    </extensions>
+
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider
+                implementation="io.github.semenciuccosmin.androidcomposeprojecttemplateplugin.TemplateProvider"
+        />
     </extensions>
 </idea-plugin>
